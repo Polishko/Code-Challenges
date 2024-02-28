@@ -4,14 +4,14 @@
 START = '08:00'
 END = '17:00'
 
-
+# Converts a string to number as in eg: 08:00 to 800,12:00 to 1200
 def convert_str_time_to_int(start_str, end_str):
     start = int(start_str.replace(':', '').lstrip('0'))
     end = int(end_str.replace(':', '').lstrip('0'))
 
     return start, end
 
-
+# Creates a set of time values for a given range. eg: {800, 801,....859, 900,....1700}
 def create_time_set(start_time, end_time):
     time_set = set()
 
@@ -29,13 +29,14 @@ def create_time_set(start_time, end_time):
 
     return time_set
 
-
+# The main function
 def free_hours(occupied_main_list, duration_hours):
     available_hours_str = convert_str_time_to_int(START, END)
     available_hours = create_time_set(available_hours_str[0], available_hours_str[1])
     occupied_hours = set()
     main_occupied_hours = [item for sub_list in occupied_main_list for item in sub_list]
 
+    # finds occupied ours for each slot in occupied time slots list
     for slot in main_occupied_hours:
         start = slot[0]
         end = slot[1]
@@ -45,6 +46,7 @@ def free_hours(occupied_main_list, duration_hours):
 
     available_hours = available_hours.difference(occupied_hours)
 
+    # The duration converted to values similar to those in the available hours set
     duration = int(duration_hours * 100 if len(str(duration_hours)) == 1
                    else int(str(duration_hours)[0]) * 100 + int(str(duration_hours)[2:]) * 60/10)
 
