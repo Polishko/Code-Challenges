@@ -49,11 +49,17 @@ def find_earliest_slot(occupied_main_list, duration_hours):
         if available_time >= duration:
             return f'First available slot: {current_slot.strftime("%H:%M")}'
 
-        return "No available slots"
+    return "No available slots"
 
+
+# print(find_earliest_slot([
+#     [('09:00', '11:00'), ('13:00', '15:00')],
+#     [('10:00', '12:00'), ('14:00', '16:00')],
+#     [('11:00', '15:00')]
+# ], 1))
 
 print(find_earliest_slot([
-    [('09:00', '11:00'), ('13:00', '15:00')],
-    [('10:00', '12:00'), ('14:00', '16:00')],
-    [('11:00', '15:00')]
+    [('08:00', '17:00')],
+    [('08:00', '17:00')],
+    [('08:00', '17:00')]
 ], 1))
