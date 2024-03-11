@@ -19,21 +19,6 @@ def get_unique_first_names(list_input):
 
     return modified_list
 
-
-# less memory complexity
-# import random
-#
-#
-# def get_unique_first_names(list_input):
-#     modified_list = []
-#
-#     for info in list_input:
-#         same_name = list(filter(lambda x: x[0] == info[0], list_input))
-#         modified_list.append(random.choice(same_name))
-#
-#     return modified_list
-#
-#
 # print(get_unique_first_names(
 #         [
 #             ("John", "Doe"),
